@@ -1,7 +1,7 @@
 #!/bin/bash
 dim=640
 n_layers=8
-history_cnt=4
+history_cnt=1
 
 model_mode=$1
 if [ -z "${model_mode}" ]; then
