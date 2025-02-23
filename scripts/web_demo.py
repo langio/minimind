@@ -177,7 +177,7 @@ MODEL_PATHS = {
 }
 
 MODEL_PATHS = {
-    "MiniMind2-MoE (0.15B)": ["../out", "MiniMind2-MoE"],
+    "MiniMind2-MoE (0.15B)": ["./out", "MiniMind2-MoE"],
 }
 
 selected_model = st.sidebar.selectbox('Models', list(MODEL_PATHS.keys()), index=0)  # 默认选择 MiniMind2
