@@ -99,7 +99,10 @@ def init_model(lm_config):
     tokenizer = AutoTokenizer.from_pretrained('./model/minimind_tokenizer')
     model = MiniMindLM(lm_config)
     moe_path = '_moe' if lm_config.use_moe else ''
+    full_sft = f'./out/full_sft_{lm_config.dim}{moe_path}.pth'
     ckp = f'./out/pretrain_{lm_config.dim}{moe_path}.pth'
+    if os.path.exists(full_sft):
+        ckp = full_sft
     state_dict = torch.load(ckp, map_location=args.device)
     model.load_state_dict(state_dict, strict=False)
     Logger(f'LLM总参数量：{sum(p.numel() for p in model.parameters() if p.requires_grad) / 1e6:.3f} 百万')
